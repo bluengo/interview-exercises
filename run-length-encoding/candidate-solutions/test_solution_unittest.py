@@ -9,7 +9,7 @@ class TestCompressDecompress(unittest.TestCase):
     def setUpClass(test_class):
         module_name = os.getenv("CANDIDATE_NUMBER")
         test_class.module = importlib.import_module(module_name)
-    
+
     def setUp(self):
         self.inputs = {
             "aaabbbbccccc":                         "a3b4c5",
@@ -17,6 +17,11 @@ class TestCompressDecompress(unittest.TestCase):
             "aaaaaaaaaaabbbbbccccaaaaaaa":          "a11b5c4a7",
             "aaabbccccccccccccddddaaaaaaaaaaaaaaa": "a3b2c12d4a15",
             "aaaaaabcccc":                          "a6bc4",
+            "abbbbbcccccccccccccccdda":             "ab5c15d2a",
+            "dddccccbbbbbbbaaa":                    "d3c4b7a3",
+            "aaaaacccca":                           "a5c4a",
+            "aaaaaaaaaabbbbbbbbbbcccccccccc":       "a10b10c10",
+            "abbcccddddeeeeeffffffggggggghhhhhhhh": "ab2c3d4e5f6g7h8",
         }
 
     def test_compress(self):
