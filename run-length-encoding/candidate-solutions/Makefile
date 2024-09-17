@@ -19,6 +19,7 @@ endif
 
 export CANDIDATE_NUMBER
 
+.PHONY: help
 help: ## Shows this help message
 	@echo -e "\033[1;32mAvailable targets:\033[0m"
 	@awk 'BEGIN {FS = ":.*?## "}; /^[a-zA-Z].*:.*##/ {printf "  %-30s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
