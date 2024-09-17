@@ -19,10 +19,15 @@ endif
 
 export CANDIDATE_NUMBER
 
+help: ## Shows this help message
+	@echo -e "\033[1;32mAvailable targets:\033[0m"
+	@awk 'BEGIN {FS = ":.*?## "}; /^[a-zA-Z].*:.*##/ {printf "  %-30s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
 .PHONY: check
-check:
+check: ## Given the candidate ID number as $CANDIDATE_NUMBER, validates exercise with UnitTest
 	@pytest --tb=line ./test_solution_unittest.py
 
 .PHONY: pytest
-pytest:
+pytest: ## Given the candidate ID number as $CANDIDATE_NUMBER, validates exercise with PyTest
 	@pytest --tb=line ./test_solution_pytest.py
+
